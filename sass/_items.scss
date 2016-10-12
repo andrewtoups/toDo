@@ -1,0 +1,114 @@
+li {
+  position: relative;
+  form {
+    border: none;
+  }
+}
+
+li article { //default styling for newly created, inactive article
+  border-bottom: thin lightgrey solid;
+  text-align: left;
+  font-size: 25px;
+  line-height: 2;
+
+  button.check {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    background: white;
+    border: lightgrey solid 1px;
+    margin: 0 10px;
+    color: green;
+    position: relative;
+    span {
+      display: none;
+    }
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    &:hover{
+      cursor: crosshair;
+    }
+    &:hover ~ .highlight{
+      background: whitesmoke;
+      cursor: crosshair;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  &.completed { // for completed articles
+    p {
+      text-decoration: line-through;
+    }
+    .check{
+      span {
+        display: inherit;
+        position: absolute;
+        left: 5px;
+        top: -9px;
+        transform: scale(1.7);
+      }
+    }
+  }
+
+  &.editing {
+
+    p {
+      display: none;
+    }
+    input {
+      text-align: left;
+      font-size: 25px;
+      font-style: normal;
+      display: inline-block;
+      line-height: initial;
+      padding: 5px 0;
+      margin: 0;
+      border: 1px lightgrey dotted;
+      width: 80%;
+      left: 55px;
+      -webkit-box-shadow: inset 0px 0px 29px 1px rgba(0,0,0,0.06);
+    }
+
+    .highlight {
+      display: none;
+    }
+
+  }
+
+}
+
+li .highlight {
+  position: absolute;
+  width: 80%;
+  height: 44px;
+  margin: 3px 44px;
+  top: 0;
+  right: 0;
+  transition: all .2s;
+  &:hover{
+    background: whitesmoke;
+    cursor: crosshair;
+    transition: all .2s;
+  }
+}
+
+
+// footer styling
+
+footer * {
+  color: lightgrey;
+  }
+
+footer button {
+  border: none;
+  background: white;
+  &:focus {
+    outline: solid 1px lightgrey;
+  }
+}

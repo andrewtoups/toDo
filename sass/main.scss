@@ -13,6 +13,25 @@
   }
 }
 
+#debug{
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  height: 70px;
+  width: 70px;
+  border: none;
+  background: lightblue;
+  border-radius: 40px;
+  &:active {
+    background: pink;
+  }
+}
+
+body {
+    background-color: $backgroundColor;
+    font-family: $primaryFont;
+}
+
 header {
   text-align: center;
 }
@@ -20,13 +39,6 @@ header {
 main {
   // width: 500px;
   text-align: center;
-  div.card {
-    background: white;
-    display: inline-block;
-    width: 500px;
-    box-shadow: 0px -1px 16px -2px rgba(0,0,0,0.28);
-    position: relative;
-  }
   form, footer{
     padding: 10px 0;
     margin: 0;

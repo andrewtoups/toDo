@@ -17,73 +17,66 @@
 
     <header>
         <h1>todos</h1>
+        <button id="debug"></button>
     </header>
 
     <main>
         <div class='card'>
-            <form action='' method='post'>
+            <form class="new-task">
                 <input type='text' class='new-todo' placeholder='What needs to be done?'>
             </form>
-
-            <ul class='items'>
-                <!-- example of existing item (incomplete) -->
-
-                <li>
-                    <article>
-                        <button class='check'></button>
-                        <p>learn html</p>
-                        <input type='text' class='edit-todo' value='learn html'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-
-                <!-- example of completed item -->
-
-                <li>
-                    <article class='completed'>
-                        <button class='check'></button>
-                        <p class='complete' tabindex="1">learn css</p>
-                        <input type='text' class='edit-todo' value='learn css'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-
-                <!-- example of item currently being edited -->
-
-                <li>
-                    <article class='editing'>
-                        <button class='check'></button>
-                        <p tabindex="1">learn javascript</p>
-                        <input type='text' class='edit-todo' value='learn javascript'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-
-            </ul>
-
-            <footer>
-                <p class='remaining' tabindex="1"><span class='incomplete-items'>0</span> items left</p>
-                <nav>
-                    <ul>
-                        <li><button class='show-all active'>All</button></li>
-                        <li><button class='show-active'>Active</button></li>
-                        <li><button class='show-completed'>Completed</button></li>
-                    </ul>
-                </nav>
-                <button class='clear'>Clear completed</button>
-            </footer>
         </div>
     </main>
 
 
     <!-- HANDLEBAR TEMPLATE -->
+    <!-- CARD -->
+    <script id='card' type=type="text/x-handlebars-template">
+      <div class='card'>
+        <button class='plus'>+</button>
+        <form class ="new-task">
+            <input type='text' class='new-todo' placeholder='What needs to be done?'>
+        </form>
+        <button class='delete'>X</button>
+
+        <ul class='items'>
+
+
+
+        </ul>
+
+        <footer>
+            <p class='remaining' tabindex="1"><span class='incomplete-items'>0</span> items left</p>
+            <nav>
+                <ul>
+                    <li><button class='show-all'>All</button></li>
+                    <li><button class='show-active'>Active</button></li>
+                    <li><button class='show-completed'>Completed</button></li>
+                </ul>
+            </nav>
+            <button class='clear'>Clear completed</button>
+        </footer>
+      </div>
+    </script>
+
+
+
+
+
+
+
+
+    <!-- ITEM -->
     <script id="item" type="text/x-handlebars-template">
         <li>
-            <article>
-                <button class={{buttonClass}}></button>
-                <p class={{taskState}} tabindex="1"}>{{taskName}}</p>
-                <input type='text' class='edit-todo' value={{taskName}}>
+            <article class ={{taskState}}>
+                <button class="check"><span class="hidden">✓</span></button>
+                <p>{{taskName}}</p>
+                <form class="item-input">
+                  <input type='text' placeholder={{taskName}}>
+                </form>
                 <button class='delete'>X</button>
+                <div class="highlight"></div>
             </article>
         </li>
     </script>
