@@ -27,9 +27,12 @@ div.card {
   }
 
   .delete {
-    transform: scaleY(.8);
-    right: 10px;
-    color: red
+    transform: scaleY(0.8);
+    right: 0px;
+    padding-right: 10px;
+    color: red;
+    z-index: 1;
+    background: white;
   }
 
   .plus{

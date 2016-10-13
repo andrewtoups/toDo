@@ -385,8 +385,11 @@ div.card {
       transition: all .4s; }
   div.card .delete {
     transform: scaleY(0.8);
-    right: 10px;
-    color: red; }
+    right: 0px;
+    padding-right: 10px;
+    color: red;
+    z-index: 1;
+    background: white; }
   div.card .plus {
     left: 10px;
     color: green;
@@ -415,7 +418,8 @@ li article {
   border-bottom: thin lightgrey solid;
   text-align: left;
   font-size: 25px;
-  line-height: 2; }
+  line-height: 2;
+  overflow: hidden; }
   li article button.check {
     height: 30px;
     width: 30px;
@@ -427,13 +431,16 @@ li article {
     position: relative; }
     li article button.check span {
       display: none; }
+  li article .taskContainer {
+    display: inline-block;
+    width: 80%;
+    white-space: nowrap; }
+    li article .taskContainer:hover ~ .highlight {
+      background: whitesmoke; }
   li article p {
     position: relative;
     z-index: 1; }
     li article p:hover {
-      cursor: crosshair; }
-    li article p:hover ~ .highlight {
-      background: whitesmoke;
       cursor: crosshair; }
   li article input {
     display: none; }
@@ -447,26 +454,30 @@ li article {
     transform: scale(1.7); }
   li article.editing p {
     display: none; }
+  li article.editing .item-input {
+    position: absolute;
+    width: 85%;
+    left: 52px;
+    bottom: -9px; }
   li article.editing input {
     text-align: left;
     font-size: 25px;
     font-style: normal;
     display: inline-block;
     line-height: initial;
-    padding: 5px 0;
+    padding: 5px 0 5px 4px;
     margin: 0;
     border: 1px lightgrey dotted;
-    width: 80%;
-    left: 55px;
+    width: 100%;
     -webkit-box-shadow: inset 0px 0px 29px 1px rgba(0, 0, 0, 0.06); }
   li article.editing .highlight {
     display: none; }
 
 li .highlight {
   position: absolute;
-  width: 80%;
+  width: 85%;
   height: 44px;
-  margin: 3px 44px;
+  margin: 3px 24px 3px 51px;
   top: 0;
   right: 0;
   transition: all .2s; }

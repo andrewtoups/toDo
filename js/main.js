@@ -35,14 +35,14 @@ var addListeners = {
       });
 
 //cancel text editing
-    $('body')
-      .click(function(event){
-        if (event.target.className === "highlight" ||
-            event.target.className === "taskName"){
-          return;
-        }
-        $('.editing').attr('class', 'default');
-      });
+    // $('body')
+    //   .click(function(event){
+    //     if (event.target.className === "highlight" ||
+    //         event.target.className === "taskName"){
+    //       return;
+    //     }
+    //     $('.editing').attr('class', 'default');
+    //   });
 
 //     $('#debug')
 // //debug button
@@ -62,6 +62,10 @@ var addListeners = {
         var field = $(self.container).find('.new-todo');
         $(field).val('').attr('placeholder', 'Anything else?');
         new toDoListItem(text, self);
+      })
+// cancel text input
+      .on('blur', 'input', function(){
+        $(self.container).find('.item-input').trigger('submit');
       })
 // show all button
       .on('click', '.show-all', function(){
@@ -97,6 +101,7 @@ var addListeners = {
 // editor
       .on('click', '.highlight, p', function(){
         self.changeState('editing');
+        $(self.item).find('input').focus();
       })
 
 // input form
