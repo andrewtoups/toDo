@@ -17,13 +17,13 @@
 
     <header>
         <h1>todos</h1>
-        <button id="debug"></button>
+        <!-- <button id="debug"></button> -->
     </header>
 
     <main>
         <div class='card'>
             <form class="new-task">
-                <input type='text' class='new-todo' placeholder='What needs to be done?'>
+                <input type='text' class='new-todo' placeholder='What needs to be done?' autofocus>
             </form>
         </div>
     </main>
@@ -33,11 +33,11 @@
     <!-- CARD -->
     <script id='card' type=type="text/x-handlebars-template">
       <div class='card'>
-        <button class='plus'>+</button>
+        <!-- <button class='plus'>+</button> -->
         <form class ="new-task">
-            <input type='text' class='new-todo' placeholder='What needs to be done?'>
+            <input type='text' class='new-todo' placeholder='What needs to be done?' autofocus>
         </form>
-        <button class='delete'>X</button>
+        <!-- <button class='delete'>X</button> -->
 
         <ul class='items'>
 
@@ -46,7 +46,7 @@
         </ul>
 
         <footer>
-            <p class='remaining' tabindex="1"><span class='incomplete-items'>0</span> items left</p>
+            <p class='remaining'><span class='incomplete-items'>0 items</span> left</p>
             <nav>
                 <ul>
                     <li><button class='show-all'>All</button></li>
@@ -54,7 +54,7 @@
                     <li><button class='show-completed'>Completed</button></li>
                 </ul>
             </nav>
-            <button class='clear'>Clear completed</button>
+            <button class='clear' tabindex="0">Clear completed</button>
         </footer>
       </div>
     </script>
@@ -71,7 +71,7 @@
         <li>
             <article class ={{taskState}}>
                 <button class="check"><span class="hidden">✓</span></button>
-                <p>{{taskName}}</p>
+                <p class="taskName">{{taskName}}</p>
                 <form class="item-input">
                   <input type='text' placeholder={{taskName}}>
                 </form>

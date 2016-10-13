@@ -97,18 +97,3 @@ li .highlight {
     transition: all .2s;
   }
 }
-
-
-// footer styling
-
-footer * {
-  color: lightgrey;
-  }
-
-footer button {
-  border: none;
-  background: white;
-  &:focus {
-    outline: solid 1px lightgrey;
-  }
-}
