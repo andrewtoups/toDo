@@ -24,7 +24,8 @@ li article { //default styling for newly created, inactive article
     @include mobile {
       height: 30px;
       width: 30px;
-      margin: 0;
+      // margin: 0;
+      padding-left: 0;
     }
     span {
       display: none;

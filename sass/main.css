@@ -439,7 +439,7 @@ li article {
       li article button.check {
         height: 30px;
         width: 30px;
-        margin: 0; } }
+        padding-left: 0; } }
     li article button.check span {
       display: none; }
   li article .taskContainer {
