@@ -370,7 +370,7 @@ div.card {
   position: absolute;
   transform-origin: center;
   transform: translateX(-50%); }
-  @media only screen and (max-width: 414px) {
+  @media only screen and (max-width: 500px) {
     div.card {
       width: 100%; } }
   div.card .delete, div.card .plus {
@@ -383,7 +383,7 @@ div.card {
     background: none;
     opacity: 0;
     transition: all .2s; }
-    @media only screen and (max-width: 414px) {
+    @media only screen and (max-width: 500px) {
       div.card .delete, div.card .plus {
         opacity: 0.2; } }
     div.card .delete:hover, div.card .plus:hover {
@@ -435,6 +435,11 @@ li article {
     margin: 0 10px;
     color: green;
     position: relative; }
+    @media only screen and (max-width: 500px) {
+      li article button.check {
+        height: 30px;
+        width: 30px;
+        margin: 0; } }
     li article button.check span {
       display: none; }
   li article .taskContainer {
@@ -487,7 +492,7 @@ li .highlight {
   top: 0;
   right: 0;
   transition: all .2s; }
-  @media only screen and (max-width: 414px) {
+  @media only screen and (max-width: 500px) {
     li .highlight {
       width: 77%; } }
   li .highlight:hover {

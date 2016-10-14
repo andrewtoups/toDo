@@ -21,6 +21,11 @@ li article { //default styling for newly created, inactive article
     margin: 0 10px;
     color: green;
     position: relative;
+    @include mobile {
+      height: 30px;
+      width: 30px;
+      margin: 0;
+    }
     span {
       display: none;
     }

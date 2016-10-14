@@ -1,7 +1,7 @@
-$mobile-width: 414px;
+$max-width: 500px;
 
 @mixin mobile {
-  @media only screen and (max-width: #{$mobile-width}) {
+  @media only screen and (max-width: #{$max-width}) {
     @content;
   }
 }
