@@ -104,6 +104,9 @@ li .highlight {
   top: 0;
   right: 0;
   transition: all .2s;
+  @include mobile {
+    width: 77%;
+  }
   &:hover{
     background: whitesmoke;
     cursor: crosshair;

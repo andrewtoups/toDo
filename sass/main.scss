@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 @import 'normalize';
 @import 'layout';
 @import 'form';
@@ -13,19 +14,19 @@
   }
 }
 
-#debug{
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  height: 70px;
-  width: 70px;
-  border: none;
-  background: lightblue;
-  border-radius: 40px;
-  &:active {
-    background: pink;
-  }
-}
+// #debug{
+//   position: fixed;
+//   top: 30px;
+//   right: 30px;
+//   height: 70px;
+//   width: 70px;
+//   border: none;
+//   background: lightblue;
+//   border-radius: 40px;
+//   &:active {
+//     background: pink;
+//   }
+// }
 
 body {
     background-color: $backgroundColor;

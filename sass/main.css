@@ -370,6 +370,9 @@ div.card {
   position: absolute;
   transform-origin: center;
   transform: translateX(-50%); }
+  @media only screen and (max-width: 414px) {
+    div.card {
+      width: 100%; } }
   div.card .delete, div.card .plus {
     line-height: 2;
     font-size: 25px;
@@ -380,6 +383,9 @@ div.card {
     background: none;
     opacity: 0;
     transition: all .2s; }
+    @media only screen and (max-width: 414px) {
+      div.card .delete, div.card .plus {
+        opacity: 0.2; } }
     div.card .delete:hover, div.card .plus:hover {
       opacity: 1;
       transition: all .4s; }
@@ -481,6 +487,9 @@ li .highlight {
   top: 0;
   right: 0;
   transition: all .2s; }
+  @media only screen and (max-width: 414px) {
+    li .highlight {
+      width: 77%; } }
   li .highlight:hover {
     background: whitesmoke;
     cursor: crosshair;
@@ -515,18 +524,6 @@ footer {
   font-weight: 100; }
   *:focus {
     outline: none; }
-
-#debug {
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  height: 70px;
-  width: 70px;
-  border: none;
-  background: lightblue;
-  border-radius: 40px; }
-  #debug:active {
-    background: pink; }
 
 body {
   background-color: #f5f5f5;
