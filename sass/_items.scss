@@ -24,7 +24,7 @@ li article { //default styling for newly created, inactive article
     @include mobile {
     padding: 0;
     margin: 4px 4px;
-    position: relative;
+    // position: relative;
     // top: 5px;
     }
     span {
@@ -61,8 +61,8 @@ li article { //default styling for newly created, inactive article
       @include mobile {
       padding: 0;
       margin: 4px 4px;
-      position: relative;
-      top: 5px;
+      // position: relative;
+      // top: 5px;
       }
 
       span {

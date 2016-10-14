@@ -438,8 +438,7 @@ li article {
     @media only screen and (max-width: 500px) {
       li article button.check {
         padding: 0;
-        margin: 4px 4px;
-        position: relative; } }
+        margin: 4px 4px; } }
     li article button.check span {
       display: none; }
   li article .taskContainer {
@@ -460,9 +459,7 @@ li article {
   @media only screen and (max-width: 500px) {
     li article.completed .check {
       padding: 0;
-      margin: 4px 4px;
-      position: relative;
-      top: 5px; } }
+      margin: 4px 4px; } }
   li article.completed .check span {
     display: inherit;
     position: absolute;
