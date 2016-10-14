@@ -458,6 +458,12 @@ li article {
     display: none; }
   li article.completed p {
     text-decoration: line-through; }
+  @media only screen and (max-width: 500px) {
+    li article.completed .check {
+      padding: 0;
+      margin: 4px 4px;
+      position: relative;
+      top: 5px; } }
   li article.completed .check span {
     display: inherit;
     position: absolute;
@@ -495,7 +501,8 @@ li .highlight {
   transition: all .2s; }
   @media only screen and (max-width: 500px) {
     li .highlight {
-      width: 77%; } }
+      width: 77%;
+      opacity: 0; } }
   li .highlight:hover {
     background: whitesmoke;
     cursor: crosshair;

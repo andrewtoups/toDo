@@ -58,6 +58,13 @@ li article { //default styling for newly created, inactive article
       text-decoration: line-through;
     }
     .check{
+      @include mobile {
+      padding: 0;
+      margin: 4px 4px;
+      position: relative;
+      top: 5px;
+      }
+
       span {
         display: inherit;
         position: absolute;
@@ -112,6 +119,7 @@ li .highlight {
   transition: all .2s;
   @include mobile {
     width: 77%;
+    opacity: 0;
   }
   &:hover{
     background: whitesmoke;
