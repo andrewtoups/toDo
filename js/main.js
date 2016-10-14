@@ -13,17 +13,14 @@ var utils = {
   }
 };
 
-// card manager
-
-var cardStack = {
-    cards: [],
-};
-
 // event listeners
 
 var addListeners = {
 // listeners loaded on page load:
   init: function(){
+
+// if there is no stored data, display dummy prompt
+    if (localStorage.getItem('list items') === null) {
     $('.card')
 
 // initial task prompt
@@ -31,19 +28,16 @@ var addListeners = {
         event.preventDefault();
         var text = $('input').val();
         $('main').empty();
-        new toDoList(text);
+        var seed = [{
+          taskName: text,
+        }];
+        new toDoList(seed);
       });
-
-//cancel text editing
-    // $('body')
-    //   .click(function(event){
-    //     if (event.target.className === "highlight" ||
-    //         event.target.className === "taskName"){
-    //       return;
-    //     }
-    //     $('.editing').attr('class', 'default');
-    //   });
-
+    } // if there is stored data, populate list based on data
+    else {
+      var seed = JSON.parse(localStorage.getItem('list items'));
+      new toDoList(seed);
+    }
 //     $('#debug')
 // //debug button
 //       .click(function(){
@@ -62,10 +56,6 @@ var addListeners = {
         var field = $(self.container).find('.new-todo');
         $(field).val('').attr('placeholder', 'Anything else?');
         new toDoListItem(text, self);
-      })
-// cancel text input
-      .on('blur', 'input', function(){
-        $(self.container).find('.item-input').trigger('submit');
       })
 // show all button
       .on('click', '.show-all', function(){
@@ -112,17 +102,22 @@ var addListeners = {
         self.changeState('default');
       })
 
+// cancel text input
+      .on('blur', 'input', function(){
+        $(self.item).find('.item-input').trigger('submit');
+      })
+
 // delete button
       .on('click', '.delete', function() {
         self.kill();
       });
   },
-  debug: function(self){
-    $(self.item).add(self.container)
-      .on('click', '.debug', function (){
-        console.log(self);
-      });
-  }
+  // debug: function(self){
+  //   $(self.item).add(self.container)
+  //     .on('click', '.debug', function (){
+  //       console.log(self);
+  //     });
+  // }
 };
 
 ///////
@@ -136,17 +131,17 @@ var toDoList = function(seed){
   this.items = [];
   this.container = this.displayList(); // assign page element as property
 
+// default seed is empty array"
+  seed = (!seed) ? [] : seed;
+
 // set focus
   $(this.container).find('.new-todo').focus();
 
 // add event listeners
   addListeners.list(this);
-  // addListeners.debug(this);
 
-// if list is created with a string, make a new list item with that string
-  if (seed !== undefined && typeof seed === 'string'){
-    new toDoListItem(seed, this);
-  }
+// populate based on starting list data
+  this.populate(seed);
 };
 
 toDoList.prototype = {
@@ -154,6 +149,12 @@ toDoList.prototype = {
   displayList : function(){
     var html = utils.template('#card');
     return $(html).appendTo('main').slideDown();
+  },
+
+  populate : function(seed) { //fill list with starting data
+    for (var index = 0; index < seed.length; index++){
+      new toDoListItem(seed[index].taskName, this, seed[index].taskState);
+    }
   },
 
   updateCount : function(){
@@ -209,10 +210,11 @@ toDoList.prototype = {
 ////////////////
 ///
 
-var toDoListItem = function(taskName, listObj){
+var toDoListItem = function(taskName, listObj, taskState){
   //set properties:
+  taskState = (!taskState) ? 'default' : taskState;
   this.context = {
-    taskState: 'default',
+    taskState: taskState,
     taskName: taskName
   };
   this.parent = listObj; // assign list object that created list item as property
@@ -221,6 +223,7 @@ var toDoListItem = function(taskName, listObj){
 
 //constructor tasks:
   this.parent.items.push(this); //send to parent's array
+  this.store();
   $(this.item).find('input').attr('value', this.context.taskName); //create text for input field
 
 //add event listeners:
@@ -234,8 +237,16 @@ toDoListItem.prototype = {
     var html = utils.template('#item', this.context); // create handlebars template
     return $(html).hide().appendTo(this.list).slideDown('ease', (function(){  // slide it in
       var count = this.parent.updateCount(); // update count after it's created
-      this.parent.manageGreeting(count);
+      this.parent.manageGreeting(count); // send count to change greeting if needed
     }).bind(this));
+  },
+
+  store: function() { // send full array of items to local storages
+    var listData = [];
+    for (var index = 0; index < this.parent.items.length; index++){
+      listData.push(this.parent.items[index].context);
+    }
+    localStorage.setItem('list items', JSON.stringify(listData));
   },
 
   changeState: function(state) {
@@ -243,11 +254,13 @@ toDoListItem.prototype = {
     this.context.taskState = state;
     var count = this.parent.updateCount();
     this.parent.manageGreeting(count);
+    this.store();
   },
 
   changeTask: function(task){
     $(this.item).find('p').text(task);
     $(this.item).find('input').attr('placeholder', task);
+    this.store();
   },
 
   hide: function(){
@@ -262,6 +275,7 @@ toDoListItem.prototype = {
     var index = this.parent.items.indexOf(this);
     this.parent.items.splice(index, 1);
     var count = this.parent.updateCount();
+    this.store();
     this.parent.manageGreeting(count);
     $(this.item).slideUp('ease', function (){
       $(this).remove();
