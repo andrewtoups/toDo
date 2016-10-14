@@ -437,9 +437,10 @@ li article {
     position: relative; }
     @media only screen and (max-width: 500px) {
       li article button.check {
-        height: 30px;
-        width: 30px;
-        padding-left: 0; } }
+        padding: 0;
+        margin: 4px 4px;
+        position: relative;
+        top: 5px; } }
     li article button.check span {
       display: none; }
   li article .taskContainer {

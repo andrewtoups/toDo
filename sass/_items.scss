@@ -22,10 +22,10 @@ li article { //default styling for newly created, inactive article
     color: green;
     position: relative;
     @include mobile {
-      height: 30px;
-      width: 30px;
-      // margin: 0;
-      padding-left: 0;
+    padding: 0;
+    margin: 4px 4px;
+    position: relative;
+    top: 5px;
     }
     span {
       display: none;
